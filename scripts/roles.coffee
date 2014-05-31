@@ -47,6 +47,10 @@ module.exports = (robot) ->
     name    = msg.match[1].trim()
     newRole = msg.match[2].trim()
 
+    # Can only assign roles to self
+    if name.toLowerCase() is not msg.user.name.toLowerCase()
+      return
+
     unless name in ['', 'who', 'what', 'where', 'when', 'why']
       unless newRole.match(/^not\s+/i)
         users = robot.brain.usersForFuzzyName(name)
@@ -71,6 +75,10 @@ module.exports = (robot) ->
     name    = msg.match[1].trim()
     newRole = msg.match[2].trim()
 
+    # Can only assign roles to self
+    if name.toLowerCase() is not msg.user.name.toLowerCase()
+      return
+
     unless name in ['', 'who', 'what', 'where', 'when', 'why']
       users = robot.brain.usersForFuzzyName(name)
       if users.length is 1
@@ -84,6 +92,6 @@ module.exports = (robot) ->
           msg.send "Ok, #{name} is no longer #{newRole}."
       else if users.length > 1
         msg.send getAmbiguousUserText users
-      #else # do nothing here, because we don't want to be annoying
-        #msg.send "I don't know anything about #{name}."
+      else
+        msg.send "I don't know anything about #{name}."
 
