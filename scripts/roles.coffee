@@ -43,7 +43,7 @@ module.exports = (robot) ->
       else
         msg.send "#{name}? Never heard of 'em"
 
-  robot.hear /@?([\w .\-_]+) is (.+)$/i, (msg) ->
+  robot.hear /@?([\w .\-_]+) is (.+?)[.!]*$/i, (msg) ->
     name    = msg.match[1].trim()
     newRole = msg.match[2].trim()
 
@@ -70,7 +70,7 @@ module.exports = (robot) ->
         else
           msg.send "I don't know anything about #{name}."
 
-  robot.hear /@?([\w .\-_]+) is not (.+)$/i, (msg) ->
+  robot.hear /@?([\w .\-_]+) is not (.+?)[.!]*$/i, (msg) ->
     name    = msg.match[1].trim()
     newRole = msg.match[2].trim()
 
