@@ -84,6 +84,6 @@ module.exports = (robot) ->
           msg.send "Ok, #{name} is no longer #{newRole}."
       else if users.length > 1
         msg.send getAmbiguousUserText users
-      else
-        msg.send "I don't know anything about #{name}."
+      #else # do nothing here, because we don't want to be annoying
+        #msg.send "I don't know anything about #{name}."
 
