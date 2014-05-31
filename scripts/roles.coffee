@@ -48,10 +48,9 @@ module.exports = (robot) ->
     newRole = msg.match[2].trim()
 
     # Can only assign roles to self
-    if name.toLowerCase() isnt msg.user.name.toLowerCase()
-      return
+    assigning_to_self = name.toLowerCase() is msg.user.name.toLowerCase()
 
-    unless name in ['', 'who', 'what', 'where', 'when', 'why']
+    if assigning_to_self and name not in ['', 'who', 'what', 'where', 'when', 'why']
       unless newRole.match(/^not\s+/i)
         users = robot.brain.usersForFuzzyName(name)
         if users.length is 1
@@ -76,10 +75,9 @@ module.exports = (robot) ->
     newRole = msg.match[2].trim()
 
     # Can only assign roles to self
-    if name.toLowerCase() isnt msg.user.name.toLowerCase()
-      return
+    assigning_to_self = name.toLowerCase() is msg.user.name.toLowerCase()
 
-    unless name in ['', 'who', 'what', 'where', 'when', 'why']
+    if assigning_to_self and name not in ['', 'who', 'what', 'where', 'when', 'why']
       users = robot.brain.usersForFuzzyName(name)
       if users.length is 1
         user = users[0]
