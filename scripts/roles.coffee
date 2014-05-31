@@ -48,7 +48,7 @@ module.exports = (robot) ->
     newRole = msg.match[2].trim()
 
     # Can only assign roles to self
-    if name.toLowerCase() is not msg.user.name.toLowerCase()
+    if name.toLowerCase() isnt msg.user.name.toLowerCase()
       return
 
     unless name in ['', 'who', 'what', 'where', 'when', 'why']
@@ -76,7 +76,7 @@ module.exports = (robot) ->
     newRole = msg.match[2].trim()
 
     # Can only assign roles to self
-    if name.toLowerCase() is not msg.user.name.toLowerCase()
+    if name.toLowerCase() isnt msg.user.name.toLowerCase()
       return
 
     unless name in ['', 'who', 'what', 'where', 'when', 'why']
